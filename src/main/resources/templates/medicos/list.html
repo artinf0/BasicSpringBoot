@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Cadastro de Médicos</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>CRM</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="m: ${medicos}">
+				<td th:text="${m.nome}"></td>
+				<td th:text="${m.email}"></td>
+				<td th:text="${m.crm}"></td>
+
+				<td><a th:href="@{/medicos/edit/{id}(id=${m.id})}"
+					type="button" class="btn btn-outline btn-primary">Editar</a> 
+					<a th:href="@{/medicos/delete/{id}(id=${m.id})}" type="button"
+					class="btn btn-outline btn-danger">Excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a th:href="@{/medicos/novo}" type="button"
+		class="btn btn-outline btn-primary">Novo Médico</a>
+
+</body>
+</html>
